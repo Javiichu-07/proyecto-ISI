@@ -266,8 +266,16 @@ que pueden interpretarse de más de una manera. Cada entrada indicará su fuente
 para conservar la procedencia de la definición. El catálogo de requisitos podrá
 enlazar a los términos de esta sección, pero no los definirá de nuevo.
 
-| Término | Definición en Proyecto Simbiosis | Fuente |
-| --- | --- | --- |
+| Término | Definición en el contexto del proyecto | Fuente | 
+| --- | --- | --- | 
+| Constante fisiológica | Parámetro numérico medible del estado físico del paciente (p. ej., peso, presión arterial, pulso o temperatura) registrado en la plataforma con unidades de medida fijas predefinidas. | Documento de Visión y Alcance / Acta A03 | 
+| Parámetro de laboratorio | Resultado cuantitativo procedente de una analítica clínica (p. ej., glucosa, colesterol, ferritina), cuya introducción requiere la selección obligatoria de una unidad de medida desde una lista prefijada. | Acta de captura de requisitos generales (A03) | 
+| Umbral crítico | Valor límite (mínimo o máximo) configurado para una constante de salud que, al ser superado por un registro, desencadena automáticamente la emisión de una alerta clínica. | Acta de acuerdos técnicos y operativos / UR-05 | 
+| Alerta clínica | Notificación interna generada de forma automática por la plataforma cuando un valor de constante fisiológica o parámetro de laboratorio excede los límites del umbral crítico configurado. | Acta de captura de requisitos generales (A03) | 
+| Profesional de la salud | Usuario de la plataforma con perfil acreditado (médico, enfermero u otro especialista) que cuenta con autorización explícita concedida por el paciente para consultar sus datos fisiológicos y ajustar sus umbrales. | Documento de Visión y Alcance | 
+| Paciente | Usuario principal de la plataforma que introduce, gestiona y controla la visibilidad y los permisos de acceso a sus propios datos de salud. | Documento de Visión y Alcance | 
+| Historial de salud | Registro cronológico ordenado (de más reciente a más antiguo) que consolida todas las constantes fisiológicas, valores de analíticas y notas asociadas introducidas por el paciente. | Acta de captura de requisitos generales (A03) | 
+| Nota de texto libre | Anotación contextual opcional adjunta a un registro de constante o parámetro de laboratorio, limitada a un máximo de 500 caracteres y acompañada de un contador en tiempo real. | Acta de captura de requisitos generales (A03) |
 
 ## 10. Modelos de análisis
 
