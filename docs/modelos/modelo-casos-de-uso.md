@@ -1,8 +1,8 @@
 # Modelo de casos de uso de Proyecto Simbiosis
 
-| Versión | Fecha | Estado |
-| --- | --- | --- |
-| 2.4 | 19/10/2026 | Revisado |
+| Versión | Fecha      | Estado            |
+| ------- | ---------- | ----------------- |
+| 2.5     | 22/10/2026 | En revisión (L06) |
 
 **Iteración de referencia:** E2. Este documento recoge el modelo acumulado después de incorporar la vista de salud y recetas.
 
@@ -223,47 +223,86 @@ Los apartados 6.1 y 6.2 corresponden a las descripciones detalladas de UC-05 y U
 
 ### 6.1 Descripción detallada UC-05 — Actualizar perfil
 
-**Identificador y nombre del caso de uso:** [Indica el caso.]
+**Identificador y nombre del caso de uso:** UC-05 · Actualizar perfil.
 
-**Objetivo:** [Explica qué resultado pretende obtener el participante.]
+**Objetivo:** Actualizar los datos personales, de contacto y las preferencias del perfil propio.
 
-**Participantes:** [Indica el actor principal y los actores de apoyo, si los hay.]
+**Participantes:** Principal: Usuario registrado.
 
-**Precondiciones:** [Indica qué se da por cumplido al comenzar. Las comprobaciones que realiza el sistema pertenecen al flujo.]
+**Precondiciones:** El usuario dispone de una cuenta activa. El usuario tiene una sesión iniciada.
 
-**Inicio:** [Indica qué acción o suceso inicia el caso.]
+**Inicio:** El usuario solicita actualizar su perfil.
 
-**Escenario principal de éxito:** [Describe la secuencia entre los participantes y el sistema.]
+**Escenario principal de éxito:**
 
-**Extensiones (flujos alternativos):** [Vincula cada variación a un paso. Indica cómo continúa o termina.]
+1. El usuario solicita actualizar su perfil.
+2. El sistema presenta los datos actuales y distingue los valores editables de los que permanecen fijos.
+3. El usuario modifica los valores permitidos.
+4. El usuario solicita guardar los cambios.
+5. El sistema comprueba los datos según las reglas del acta.
+6. El sistema guarda conjuntamente los cambios en el perfil.
+7. El sistema confirma la actualización.
 
-**Postcondiciones:** [Indica qué queda establecido con éxito y qué se conserva o cambia si el caso termina sin éxito o se cancela. Una consulta no requiere modificar datos para alcanzar su objetivo.]
+**Extensiones (flujos alternativos):**
 
-**Reglas y NFR pertinentes:** [Remite a los requisitos y actas que condicionan el comportamiento.]
+- **5.a. Falta un dato obligatorio o un dato no cumple su formato:**
+  1. El sistema identifica los campos afectados y explica la corrección necesaria.
+  2. El sistema conserva los valores introducidos y no guarda ningún cambio.
+  3. El usuario corrige los datos.
+  4. El flujo vuelve al paso 4.
 
-**Preguntas abiertas:** [Registra solo las cuestiones necesarias que las fuentes no resuelvan. Si no hay preguntas para el alcance descrito, indícalo.]
+**Postcondiciones:**
+
+- **Éxito:** Los datos del perfil del usuario registrado quedan modificados y almacenados permanentemente en la plataforma.
+- **Fallo:** El perfil del usuario conserva sus datos e información previa sin ninguna modificación.
+
+**Reglas y NFR pertinentes:** UR-03; FR-019; NFR-010. El alias y la dirección de correo electrónico no se pueden modificar.
+
+**Preguntas abiertas:** No se identifican preguntas abiertas para el alcance definido en el acta aprobada.
 
 ### 6.2 Descripción detallada UC-21 — Buscar recetas
 
-**Identificador y nombre del caso de uso:** [Indica el caso.]
+**Identificador y nombre del caso de uso:** UC-21 · Buscar recetas.
 
-**Objetivo:** [Explica qué resultado pretende obtener el participante.]
+**Objetivo:** Buscar recetas mediante los criterios seleccionados, consultar los resultados y acceder al detalle de una receta seleccionada.
 
-**Participantes:** [Indica el actor principal y los actores de apoyo, si los hay.]
+**Participantes:** Principal: Usuario registrado.
 
-**Precondiciones:** [Indica qué se da por cumplido al comenzar. Las comprobaciones que realiza el sistema pertenecen al flujo.]
+**Precondiciones:** El usuario dispone de una cuenta activa. El usuario tiene una sesión iniciada.
 
-**Inicio:** [Indica qué acción o suceso inicia el caso.]
+**Inicio:** El usuario solicita buscar recetas.
 
-**Escenario principal de éxito:** [Describe la secuencia entre los participantes y el sistema.]
+**Escenario principal de éxito:**
 
-**Extensiones (flujos alternativos):** [Vincula cada variación a un paso. Indica cómo continúa o termina.]
+1. El usuario solicita buscar recetas.
+2. El sistema presenta el formulario de búsqueda con los campos de criterios.
+3. El usuario especifica un ingrediente a incluir y solicita realizar la búsqueda.
+4. El sistema filtra las recetas que incluyen el ingrediente indicado.
+5. El sistema presenta el listado de resultados con la vista previa de cada receta.
+6. El usuario selecciona una receta del listado para consultar su contenido completo.
+7. El sistema presenta la ficha detallada de la receta seleccionada.
 
-**Postcondiciones:** [Indica qué queda establecido con éxito y qué se conserva o cambia si el caso termina sin éxito o se cancela. Una consulta no requiere modificar datos para alcanzar su objetivo.]
+**Extensiones (flujos alternativos):**
 
-**Reglas y NFR pertinentes:** [Remite a los requisitos y actas que condicionan el comportamiento.]
+- **3.a. Búsqueda por palabra o frase clave:**
+  1. El usuario introduce un término o frase clave en lugar de o junto con los ingredientes.
+  2. El flujo vuelve al paso 4.
+- **3.b. Exclusión de ingredientes:**
+  1. El usuario especifica uno o varios ingredientes que no deben estar presentes en las recetas resultantes.
+  2. El flujo vuelve al paso 4.
+- **4.a. Sin resultados compatibles:**
+  1. El sistema comprueba que no existen recetas que cumplan con los criterios especificados.
+  2. El sistema informa de la ausencia de resultados y sugiere modificar los criterios.
+  3. El flujo vuelve al paso 2.
 
-**Preguntas abiertas:** [Registra solo las cuestiones necesarias que las fuentes no resuelvan. Si no hay preguntas para el alcance descrito, indícalo.]
+**Postcondiciones:**
+
+- **Éxito:** El usuario ha consultado el listado de resultados filtrados o el detalle completo de una receta seleccionada.
+- **Fallo:** El usuario no obtiene resultados y el estado del sistema se mantiene sin alterar.
+
+**Reglas y NFR pertinentes:** UR-08; FR-085 a FR-096, FR-099, FR-103 y FR-119; NFR-004, NFR-005 y NFR-010. Alcance parcial: la aplicación automática de alergias del perfil, sugerencias avanzadas y guardado en favoritas permanecen pendientes en el modelo.
+
+**Preguntas abiertas:** No se identifican preguntas abiertas para el alcance parcial definido en el acta aprobada.
 
 ## 7 Continuidad entre iteraciones
 
@@ -280,3 +319,5 @@ UC-08 sigue retirado. Su código no se reutiliza. UC-22 a UC-30 no forman parte 
 El modelo acumulado contiene dos vistas, siete actores y veinticinco casos de uso vigentes. Los casos de E1 conservan sus identificadores. Las siguientes iteraciones mantendrán los elementos que conserven el mismo objetivo.
 
 Git conserva las revisiones registradas del modelo y sus imágenes. La evaluación de cada iteración identificará el commit de su estado revisado, conforme a la [guía de modelos](README.md). Cerrar una iteración no declara automáticamente una línea base.
+
+En la práctica L06 se incorporan las descripciones detalladas de UC-05 (Actualizar perfil) y UC-21 (Buscar recetas, con alcance parcial). Las funciones avanzadas de receta (alergias del perfil, listas, guardado en favoritas y valoraciones) conservan sus requisitos y continúan pendientes en el modelo.
